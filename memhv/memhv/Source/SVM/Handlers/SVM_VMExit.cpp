@@ -11,17 +11,18 @@ void SVM::InjectGeneralProtectionException(const PVIRTUAL_PROCESSOR_DATA vpData)
     vpData->GuestVmcb.ControlArea.EventInj = event.AsUInt64;
 }
 
-/*void SVM::InjectUndefinedOpcodeException(const PVIRTUAL_PROCESSOR_DATA vpData)
+void SVM::InjectUndefinedOpcodeException(const PVIRTUAL_PROCESSOR_DATA vpData)
 {
     EVENTINJ event;
     event.AsUInt64 = 0;
     event.Fields.Vector = EXCEPTION_VECTOR_UNDEFINED_OPCODE;
     event.Fields.Type = INTERRUPT_TYPE_HARDWARE_EXCEPTION;
     event.Fields.ErrorCodeValid = 0;
-    event.Fields.Present = 1;
+    event.Fields.Valid = 1;
     vpData->GuestVmcb.ControlArea.EventInj = event.AsUInt64;
 }
 
+/*
 void SVM::InjectPageFaultException(const PVIRTUAL_PROCESSOR_DATA vpData, const ULONG64 address)
 {
     // https://wiki.osdev.org/Exceptions#Page_Fault

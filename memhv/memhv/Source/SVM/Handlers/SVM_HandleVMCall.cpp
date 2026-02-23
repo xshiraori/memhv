@@ -114,7 +114,7 @@ void SVM::HandleVMCall(const PVIRTUAL_PROCESSOR_DATA vpData, const PGUEST_CONTEX
     }
     else
     {
-        InjectGeneralProtectionException(vpData);
+        InjectUndefinedOpcodeException(vpData);
         return;
     }
 

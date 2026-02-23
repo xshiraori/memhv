@@ -4,5 +4,8 @@ void SVM::HandleGenericSVM(const PVIRTUAL_PROCESSOR_DATA vpData, const PGUEST_CO
 {
     UNREFERENCED_PARAMETER(guestContext);
 
-    InjectGeneralProtectionException(vpData);
+    if (vpData->GuestVmcb.StateSaveArea.Cpl != 0)
+        InjectGeneralProtectionException(vpData);
+    else
+        InjectUndefinedOpcodeException(vpData);
 }

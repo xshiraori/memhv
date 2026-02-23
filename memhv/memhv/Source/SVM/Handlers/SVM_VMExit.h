@@ -3,6 +3,7 @@
 namespace SVM
 {
     void InjectGeneralProtectionException(PVIRTUAL_PROCESSOR_DATA vpData);
+    void InjectUndefinedOpcodeException(PVIRTUAL_PROCESSOR_DATA vpData);
 
     bool IsInUserland(PVIRTUAL_PROCESSOR_DATA vpData);
 
